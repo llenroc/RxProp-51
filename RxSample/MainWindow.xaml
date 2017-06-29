@@ -13,7 +13,10 @@
     </Window.DataContext>
     <StackPanel>
         <TextBox Text="{Binding CustomerInfo.Value.CustomerName.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Text="{Binding CustomerInfo.Value.Memo.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <Button Content="Alert"
                 Command="{Binding AlertCommand}" />
+        <Separator />
+        <TextBlock Text="{Binding CustomerInfo.Value.HasErrors.Value}" />
     </StackPanel>
 </Window>

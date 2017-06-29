@@ -20,12 +20,9 @@ namespace RxSample
 
         public MainWindowViewModel()
         {
-            // this.AlertCommand = new ReactiveCommand(this.CustomerInfo.Value.CustomerName.ObserveHasErrors.Inverse());
-            // I like this
             this.AlertCommand = this.CustomerInfo
                 .Value
-                .CustomerName
-                .ObserveHasErrors
+                .HasErrors
                 .Inverse()
                 .ToReactiveCommand();
             this.AlertCommand.Subscribe(this.AlertExecute);
@@ -33,7 +30,7 @@ namespace RxSample
 
         private void AlertExecute()
         {
-            MessageBox.Show(this.CustomerInfo.Value.CustomerName.Value);
+            MessageBox.Show($"{this.CustomerInfo.Value.CustomerName.Value}, {this.CustomerInfo.Value.Memo.Value}");
         }
     }
 }
